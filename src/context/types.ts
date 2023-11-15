@@ -28,7 +28,6 @@ export interface Store {
 }
 
 export interface Actions {
-  setCharacters: (characters: Character[]) => void;
   setCharacter: (character: Character) => void;
   fetchCharacterById: (id: number) => Promise<void>;
   fetchCharacters: () => Promise<void>;

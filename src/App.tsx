@@ -6,6 +6,7 @@ import CardDetails from "./components/CardDetails.tsx"
 
 import Header from "./components/Header.tsx"
 import Navbar from "./components/Navbar.tsx"
+import Pagination from "./components/Pagination.tsx"
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/home" element={<Home /> } />
           <Route path="/home/:id" element={<CardDetails /> } />
         </Routes>
+        <Pagination />
       </BrowserRouter>
   )
 }

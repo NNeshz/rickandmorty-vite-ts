@@ -10,7 +10,7 @@ const initialValue: Store = {
   filters: {
     status: null,
     species: null,
-    name: null
+    name: null,
   },
   characterDetail: null,
   errors: []
@@ -41,9 +41,7 @@ export const useGeneralStore = create<Store & Actions>((set, get) => ({
       .catch((error) => set({ errors: [...initialValue.errors, error] }))
     set({ characters: response.results })
   },
-  
-  setCharacters: (characters) => set({ characters }),
-  
+    
   setFilter: (filter, value) => {
     set(state => ({ filters: { ...state.filters, [filter]: value } }))
     debounce(get().fetchCharacters, 300)() 
