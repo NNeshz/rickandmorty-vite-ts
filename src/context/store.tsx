@@ -70,6 +70,7 @@ export const useGeneralStore = create<Store & Actions>((set, get) => ({
       set({ characters: response.results })
       set({ nextPage: response.info.next })
       set({ prevPage: response.info.prev })
+      window.scrollTo(0, 0)
     }
   },
 
@@ -82,6 +83,7 @@ export const useGeneralStore = create<Store & Actions>((set, get) => ({
       set({ characters: response.results })
       set({ nextPage: response.info.next })
       set({ prevPage: response.info.prev })
+      window.scrollTo(0, 0)
     }
   }
 }))

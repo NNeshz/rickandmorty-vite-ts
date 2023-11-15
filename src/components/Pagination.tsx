@@ -15,7 +15,7 @@ export default function Pagination() {
 
   return (
     <span className="px-24 flex justify-center items-center gap-x-4 mb-10">
-      {prevPage && <button className="bg-indigo-600 px-3 py-2 font-semibold text-white rounded-md" onClick={fetchPrevPage}>Prev</button>}
+      {prevPage && <button className="bg-indigo-600 px-3 py-2 font-semibold text-white rounded-md" onClick={fetchPrevPage}>&larr; Prev</button>}
       {nexPage && <button className="bg-indigo-600 px-3 py-2 font-semibold text-white rounded-md" onClick={fetchNextPage}>Next &nbsp; &rarr;</button>}
     </span>
   )
