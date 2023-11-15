@@ -9,10 +9,6 @@ export default function Navbar() {
     setFilter('name', e.target.value)
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-  }
-
   const handleFilterByStatus = (e: ChangeEvent<HTMLSelectElement>) => {
     setFilter('status', e.target.value)
   }
@@ -22,7 +18,7 @@ export default function Navbar() {
   }
 
   return (
-    <form className="px-24 my-4 flex justify-between" onSubmit={handleSubmit}>
+    <form className="px-24 my-4 flex justify-between">
       <div>
         <input type="text" placeholder="Are you looking for someone?" className="px-3 py-2 w-80 rounded-md bg-zinc-300 text-black " onChange={handleChange} />
       </div>
