@@ -23,6 +23,8 @@ export interface Store {
     status: string | null;
     species: string | null;
   };
+  nextPage: string | null;
+  prevPage: string | null;
   characterDetail: Character | null;
   errors: string[];
 }
@@ -32,4 +34,6 @@ export interface Actions {
   fetchCharacterById: (id: number) => Promise<void>;
   fetchCharacters: () => Promise<void>;
   setFilter: (filter: keyof Store["filters"], value: string ) => void;
+  fetchNextPage: () => Promise<void>;
+  fetchPrevPage: () => Promise<void>;
 }

@@ -12,6 +12,8 @@ const initialValue: Store = {
     species: null,
     name: null,
   },
+  nextPage: null,
+  prevPage: null,
   characterDetail: null,
   errors: []
 };
@@ -30,7 +32,6 @@ export const useGeneralStore = create<Store & Actions>((set, get) => ({
       return ""
     }).join("")
 
-
     if (filter.length > 0) {
       filter = "?" + filter.slice(0, -1)
     }
@@ -40,11 +41,13 @@ export const useGeneralStore = create<Store & Actions>((set, get) => ({
       .then((response) => response.json())
       .catch((error) => set({ errors: [...initialValue.errors, error] }))
     set({ characters: response.results })
+    set({ nextPage: response.info.next })
+    set({ prevPage: response.info.prev })
   },
-    
+
   setFilter: (filter, value) => {
     set(state => ({ filters: { ...state.filters, [filter]: value } }))
-    debounce(get().fetchCharacters, 300)() 
+    debounce(get().fetchCharacters, 300)()
   },
 
   setCharacter: (character) => set((state) => ({
@@ -57,4 +60,28 @@ export const useGeneralStore = create<Store & Actions>((set, get) => ({
       .catch((error) => set({ errors: [...initialValue.errors, error] }))
     set({ characterDetail: response })
   },
+
+  fetchNextPage: async () => {
+    const nextPage = get().nextPage
+    if (nextPage) {
+      const response = await fetch(nextPage)
+        .then((response) => response.json())
+        .catch((error) => set({ errors: [...initialValue.errors, error] }))
+      set({ characters: response.results })
+      set({ nextPage: response.info.next })
+      set({ prevPage: response.info.prev })
+    }
+  },
+
+  fetchPrevPage: async () => {
+    const prevPage = get().prevPage
+    if (prevPage) {
+      const response = await fetch(prevPage)
+        .then((response) => response.json())
+        .catch((error) => set({ errors: [...initialValue.errors, error] }))
+      set({ characters: response.results })
+      set({ nextPage: response.info.next })
+      set({ prevPage: response.info.prev })
+    }
+  }
 }))
