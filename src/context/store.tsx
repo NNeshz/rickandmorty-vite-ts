@@ -41,8 +41,8 @@ export const useGeneralStore = create<Store & Actions>((set, get) => ({
       .then((response) => response.json())
       .catch((error) => set({ errors: [...initialValue.errors, error] }))
     set({ characters: response.results })
-    set({ nextPage: response.info.next })
-    set({ prevPage: response.info.prev })
+    set({ nextPage: response.info.next || null })
+    set({ prevPage: response.info.prev || null })
   },
 
   setFilter: (filter, value) => {

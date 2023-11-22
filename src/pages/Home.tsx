@@ -28,24 +28,22 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="px-24">
-      <div className="grid grid-cols-2 gap-x-8 gap-y-6 pb-8">
-        {
-          characters === undefined ? <p className="text-2xl font-bold text-center col-span-2 mt-48">Character not found</p> :
-            characters.map((character: CharacterProps) => (
-              <Card
-                key={character.id}
-                id={character.id}
-                image={character.image}
-                name={character.name}
-                status={character.status}
-                lastLocation={character.location.name}
-                firstSeen={character.origin.name}
-                species={character.species}
-              />
-            ))
-        }
-      </div>
+    <div className="grid lg:grid-cols-2 lg:gap-x-4">
+      {
+        characters === undefined ? <p className="text-center text-4xl font-bold text-zinc-700 py-24 md:col-span-2 md:py-24">Character not found</p> :
+          characters.map((character: CharacterProps) => (
+            <Card
+              key={character.id}
+              id={character.id}
+              image={character.image}
+              name={character.name}
+              status={character.status}
+              lastLocation={character.location.name}
+              firstSeen={character.origin.name}
+              species={character.species}
+            />
+          ))
+      }
     </div>
   )
 }
