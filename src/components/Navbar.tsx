@@ -1,5 +1,5 @@
 import { useGeneralStore } from "../context/store.tsx"
-import { ChangeEvent, FormEvent } from "react"
+import { ChangeEvent } from "react"
 
 export default function Navbar() {
 
